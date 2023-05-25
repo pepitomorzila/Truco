@@ -89,10 +89,10 @@ int reglas::Envido2(int palos2[3])
     return tantos2;
 }
 
-void reglas::Truco(int poder1[3], int poder2[3])
+void reglas::Truco(int poder1[3], int poder2[3],int jugada)
 {
     int mano1 = 0, mano2 = 0;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < jugada ; i++)
     {
         while (mano1 < 2 && mano2 < 2)
         {
@@ -106,11 +106,10 @@ void reglas::Truco(int poder1[3], int poder2[3])
                 mano2++;
                 std::cout << "Perdiste la mano" << std::endl;
             }
-            else if (poder1[i] = poder2[i])
+            else if (poder1[i] == poder2[i])
             {
                 mano1++;
                 mano2++;
-                //std::cout << "van a pardas" << std::endl;
             }
         }
     }
@@ -122,6 +121,7 @@ void reglas::Truco(int poder1[3], int poder2[3])
     {
         valor_truco = 2;
     }
+    //Cuando valor_truco es igual 1, significa que el usuario ha ganado la mano. De manera contraria, si valor_truco es igual a 2 el bot gha
 }
 
 int reglas::getTruco()
