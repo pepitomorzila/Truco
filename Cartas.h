@@ -25,6 +25,6 @@ public:
     void getCartas2();
     void getPalos1();
     void getPalos2();
-    void getCartayPalo1();
-    void getCartayPalo2();
+    void getCartayPalo1(int, int, int);
+    void getCartayPalo2(int, int, int);
 };

@@ -55,7 +55,7 @@ int main()
     bot b;
     reglas m;
     srand(time(nullptr));
-    int opc, opc1, opc2, tru, opcion, des_redoblar, choice_env;
+    int opc = -1, opc1 = -1, opc2 = -1, tru, opcion, des_redoblar, choice_env;
     int n = 3, k = 1;
     int max_puntos, choice_punto;
     int random[3], cartas1[3], palos1[3];
@@ -97,7 +97,7 @@ int main()
                 palos1[i] = random[i];
                 m.setPalos1(random);
             }
-            m.getCartayPalo1();
+            m.getCartayPalo1(opc,opc1,opc2);
         }
     }
     do
@@ -383,31 +383,43 @@ int main()
         cin >> tru;
         switch (tru)
         {
-        case 1:
-            if (b.cantarTruco() == 0)
+        case 1:                       // El usuario canta truco
+            if (b.cantarTruco() == 0) // El bot no canta re-truco
             {
-                if (b.decidirTruco() == 1)
+                if (b.decidirTruco() == 1) // El bot acepta truco
                 {
-                    m.Juego1();
-                    if (b.cantarTruco() == 0)
+                    m.getCartayPalo1(opc,opc1,opc2);
+                    cout<<"Que carta desea tirar?\n";
+                    cin>>opc;
+                    m.Juego1();               // Se tiran las primeras cartas
+                    if (b.cantarTruco() == 0) // El bot no canta re-truco
                     {
-                        m.Juego2();
-                        if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
+                        m.getCartayPalo1(opc,opc1,opc2);
+                        cout<<"Que carta desea tirar?\n";
+                        cin>>opc1;
+                        m.getCartayPalo1(opc,opc1,opc2);
+                        cout<<"Que carta desea tirar?\n";
+                        cin>>opc1;
+                        m.Juego2();                                                                                  // Se juega la segunda mano
+                        if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2)) // Comparamos si las dos cartas que tiró el usuario son mayores a las del bot, por ende que ganó el usuario
                         {
                             puntaje1 += 2;
                             cout << "\nGanaste el truco\n";
                             truco_check = true;
                         }
-                        else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2))
+                        else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2)) // Lo contrario
                         {
                             puntaje2 += 2;
                             cout << "\nPerdiste el truco\n";
                             truco_check = true;
                         }
 
-                        if (b.cantarTruco() == 0 && truco_check == false)
+                        if (b.cantarTruco() == 0 && truco_check == false) // El bot no canta re-truco
                         {
-                            m.Juego3();
+                            m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc2;
+                            m.Juego3(); // Se tiran las ultimas cartas
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                             {
                                 puntaje1 += 2;
@@ -431,12 +443,15 @@ int main()
                                 truco_check = true;
                             }
                         }
-                        else if (b.cantarTruco() == 1 && truco_check == false)
+                        else if (b.cantarTruco() == 1 && truco_check == false) // El bot canta re-truco después de que se hayan tirado la segunda carta
                         {
                             cout << "El bot te ha cantado retruco, desea aceptarlo?\n1. Aceptar re-truco\n2. Cantar vale-cuatro\n3. No querer el re-truco\n";
                             cin >> des_retruco;
-                            if (des_retruco == 1)
+                            if (des_retruco == 1) // Quise
                             {
+                                m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc2;
                                 m.Juego3();
                                 if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) < 3))
                                 {
@@ -452,63 +467,56 @@ int main()
                                 {
                                     puntaje1 += 3;
                                     cout << "\nGanaste el truco\n";
-                                    truco_check = true;
                                 }
                                 else if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) == 2))
                                 {
                                     puntaje2 += 3;
                                     cout << "\nPerdiste el truco\n";
-                                    truco_check = true;
+                                }
+                            }
+                            else if (des_retruco == 2)
+                            {
+                                if (b.decidirTruco() == 1) // El bot aceptó el vale-cuatro
+                                {
+                                    m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc2;
+                                    m.Juego3(); // Se tiran las ultimas cartas
+                                    if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) < 3))
+                                    {
+                                        puntaje1 += 4;
+                                        cout << "\nGanaste el truco\n";
+                                    }
+                                    else if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) < 3) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) == 3))
+                                    {
+                                        puntaje2 += 4;
+                                        cout << "\nPerdiste el truco\n";
+                                    }
+                                    if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) < 2))
+                                    {
+                                        puntaje1 += 4;
+                                        cout << "\nGanaste el truco\n";
+                                    }
+                                    else if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) == 2))
+                                    {
+                                        puntaje2 += 4;
+                                        cout << "\nPerdiste el truco\n";
+                                    }
+                                }
+                                else if (des_retruco == 3) // No quise el re-truco
+                                {
+                                    puntaje2 += 2;
+                                    cout << "\nNo quisiste el re-truco\n";
                                 }
                             }
                         }
                     }
-                    else if (b.cantarTruco() == 1)
-                    {
-                        cout << "El bot te ha cantado retruco, desea aceptarlo?\n1. Aceptar re-truco\n2. Cantar vale-cuatro\n3. No querer el re-truco\n";
-                        cin >> des_retruco;
-                        switch (des_retruco)
-                        {
-                        case 1:
-                            m.Juego2();
-                            if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
-                            {
-                                puntaje1 += 3;
-                                cout << "\nGanaste el truco\n";
-                                truco_check = true;
-                            }
-                            else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2))
-                            {
-                                puntaje2 += 3;
-                                cout << "\nPerdiste el truco\n";
-                                truco_check = true;
-                            }
-                            else if
-                            break;
-                        case 2:
-                            if (b.cantarTruco() == 0)
-                            {
-                                
-                            }
-                            break;
-                        default:
-                            break;
-                        }
-                    }
-
-                    /*
-                    if mano1 == 2 && mano2 < 2 -------> gane la jugada
-                    if mano1 < 2 && mano2 == 2 -------> perdi la jugada
-                    if mano1 == 3 && mano2 < 3 -------> gane la jugada
-                    if mano1 < 3 && mano2 == 3 -------> perdi la jugada
-                    */
                 }
                 else if (b.decidirTruco() == 0)
                 {
                     puntaje1++;
                 }
             }
-
             else if (b.cantarTruco() == 1)
             {
                 cout << "El bot te ha cantado retruco, desea aceptarlo?\n\n1. Si\n2. No\n";
@@ -524,10 +532,20 @@ int main()
                             puntaje1 += 3;
                         }
                         else if (b.cantarTruco() == 1)
-
                         {
-
+                            m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc;
                             m.Juego1();
+                             m.getCartayPalo1(opc,opc1,opc2);
+                        cout<<"Que carta desea tirar?\n";
+                        cin>>opc1;
+                        m.getCartayPalo1(opc,opc1,opc2);
+                        cout<<"Que carta desea tirar?\n";
+                        cin>>opc1;
+                        m.getCartayPalo1(opc,opc1,opc2);
+                        cout<<"Que carta desea tirar?\n";
+                        cin>>opc1;
                             m.Juego2();
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
                             {
@@ -544,6 +562,9 @@ int main()
                         }
                         if (truco_check == false)
                         {
+                            m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc2;
                             m.Juego3();
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                             {
@@ -569,36 +590,96 @@ int main()
                             }
                         }
                     }
-                    else if (des_retruco == 0)
+                    else if (des_redoblar == 0)
                     {
+                        m.getCartayPalo1(opc,opc1,opc2);
+                    cout<<"Que carta desea tirar?\n";
+                    cin>>opc;
                         m.Juego1();
-                        cout << "desea cantar vale 4?\n\n1. Si\n2. No\n";
+                        cout << "Desea cantar vale 4?\n\n1. Si\n2. No\n";
                         cin >> des_redoblar;
-                         if (b.cantarTruco() == 0)
+                        if (des_redoblar == 1)
                         {
-                            puntaje1 += 3;
+                            if (b.cantarTruco() == 0)
+                            {
+                                puntaje1 += 3;
+                            }
+                            else if (b.cantarTruco() == 1)
+                            {
+                                m.getCartayPalo1(opc,opc1,opc2);
+                                cout<<"Que carta desea tirar?\n";
+                                cin>>opc1;
+                                m.Juego2();
+                                if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
+                                {
+                                    puntaje1 += 4;
+                                    cout << "\nGanaste el truco\n";
+                                    truco_check = true;
+                                }
+                                else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2))
+                                {
+                                    puntaje2 += 4;
+                                    cout << "\nPerdiste el truco\n";
+                                    truco_check = true;
+                                }
+                            }
+                            if (truco_check == false)
+                            {
+                                m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc2;
+                                m.Juego3();
+                                if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
+                                {
+                                    puntaje1 += 4;
+                                    cout << "\nGanaste el truco\n";
+                                }
+                                else if (((m.getJuego1_1() + m.getJuego2_1()) < 3) && ((m.getJuego1_2() + m.getJuego2_2()) == 3))
+                                {
+                                    puntaje2 += 4;
+                                    cout << "\nPerdiste el truco\n";
+                                }
+                                if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
+                                {
+                                    puntaje1 += 4;
+                                    cout << "\nGanaste el truco\n";
+                                    truco_check = true;
+                                }
+                                else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2))
+                                {
+                                    puntaje2 += 4;
+                                    cout << "\nPerdiste el truco\n";
+                                    truco_check = true;
+                                }
+                            }
                         }
-                        else if (b.cantarTruco() == 1)
-
+                    }
+                    else if (des_redoblar == 0)
+                    {
+                        m.getCartayPalo1(opc,opc1,opc2);
+                        cout<<"Que carta desea tirar?\n";
+                        cin>>opc1;
+                        m.Juego2();
+                        if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
                         {
-
-                            
-                            m.Juego2();
-                            if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
-                            {
-                                puntaje1 += 4;
-                                cout << "\nGanaste el truco\n";
-                                truco_check = true;
-                            }
-                            else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2))
-                            {
-                                puntaje2 += 4;
-                                cout << "\nPerdiste el truco\n";
-                                truco_check = true;
-                            }
+                            puntaje1 += 4;
+                            cout << "\nGanaste el truco\n";
+                            truco_check = true;
+                        }
+                        else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2))
+                        {
+                            puntaje2 += 4;
+                            cout << "\nPerdiste el truco\n";
+                            truco_check = true;
                         }
                         if (truco_check == false)
+                            cout << "Desea cantar vale 4?\n\n1. Si\n2. No\n";
+                        cin >> des_redoblar;
+                        if (des_redoblar == 0)
                         {
+                            m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc2;
                             m.Juego3();
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                             {
@@ -623,25 +704,69 @@ int main()
                                 truco_check = true;
                             }
                         }
-
-                        m.Juego2();
-                    }
-                    else if (des_retruco == 0)
-                    {
-                        puntaje2 += 2;
+                        else if (des_redoblar == 1)
+                        {
+                            if (b.cantarTruco() == 0)
+                            {
+                                puntaje1 += 3;
+                            }
+                            else if (b.cantarTruco() == 1)
+                            {
+                                if (truco_check == false)
+                                {
+                                    m.getCartayPalo1(opc,opc1,opc2);
+                             cout<<"Que carta desea tirar?\n";
+                             cin>>opc2;
+                                    m.Juego3();
+                                    if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
+                                    {
+                                        puntaje1 += 4;
+                                        cout << "\nGanaste el truco\n";
+                                    }
+                                    else if (((m.getJuego1_1() + m.getJuego2_1()) < 3) && ((m.getJuego1_2() + m.getJuego2_2()) == 3))
+                                    {
+                                        puntaje2 += 4;
+                                        cout << "\nPerdiste el truco\n";
+                                    }
+                                    if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
+                                    {
+                                        puntaje1 += 4;
+                                        cout << "\nGanaste el truco\n";
+                                        truco_check = true;
+                                    }
+                                    else if (((m.getJuego1_1() + m.getJuego2_1()) < 2) && ((m.getJuego1_2() + m.getJuego2_2()) == 2))
+                                    {
+                                        puntaje2 += 4;
+                                        cout << "\nPerdiste el truco\n";
+                                        truco_check = true;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-                break;
-            case 2:
-                if (b.cantarTruco() == 0)
-                {
-                    m.Juego1();
-                }
-                break;
-            default:
-                break;
             }
+            break;
+        case 2:
+        m.getCartayPalo1(opc,opc1,opc2);
+                    cout<<"Que carta desea tirar?\n";
+                    cin>>opc;
+            m.Juego1();
+            
+            break;
+        default:
+            break;
         }
-        while (tru < 1 || tru > 2)
-            ;
-    }
+    } while (tru < 1 || tru > 2);
+
+
+
+
+
+
+
+
+
+
+    return 0;
+}

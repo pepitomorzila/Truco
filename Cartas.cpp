@@ -73,59 +73,59 @@ void cartas::setPoder(int poder1[3], int poder2[3], int mano1[3], int palos1[3],
 {
     if (mano1[0] == 1 && palos1[0] == 1)
     {
-        poder1[0] = 14;
+        poder1[0] = 14; // Macho
     }
     else if (mano1[0] == 1 && palos1[0] == 4)
     {
-        poder1[0] = 13;
+        poder1[0] = 13; // Hembra
     }
     else if (mano1[0] == 7 && palos1[0] == 1)
     {
-        poder1[0] = 12;
+        poder1[0] = 12; // 7 de espada
     }
     else if (mano1[0] == 7 && palos1[0] == 2)
     {
-        poder1[0] = 11;
+        poder1[0] = 11; // 7 de oro
     }
     else if (mano1[0] == 3 && palos1[0] == 1 || mano1[0] == 3 && palos1[0] == 2 || mano1[0] == 3 && palos1[0] == 3 || mano1[0] == 3 && palos1[0] == 4)
     {
-        poder1[0] = 10;
+        poder1[0] = 10; // Cualquier 3
     }
     else if (mano1[0] == 2 && palos1[0] == 4 || mano1[0] == 2 && palos1[0] == 2 || mano1[0] == 2 && palos1[0] == 3 || mano1[0] == 2 && palos1[0] == 4)
     {
-        poder1[0] = 9;
+        poder1[0] = 9; // Cualquier 2
     }
     else if (mano1[0] == 1 && palos1[0] == 2 || mano1[0] == 1 && palos1[0] == 3)
     {
-        poder1[0] = 8;
+        poder1[0] = 8; // Cualquier 1 menos espada y basto
     }
     else if (mano1[0] == 8 && palos1[0] == 4 || mano1[0] == 8 && palos1[0] == 2 || mano1[0] == 8 && palos1[0] == 3 || mano1[0] == 8 && palos1[0] == 1)
     {
-        poder1[0] = 7;
+        poder1[0] = 7; // Los doces
     }
     else if (mano1[0] == 9 && palos1[0] == 4 || mano1[0] == 9 && palos1[0] == 2 || mano1[0] == 9 && palos1[0] == 3 || mano1[0] == 9 && palos1[0] == 1)
     {
-        poder1[0] = 6;
+        poder1[0] = 6; // Los onces
     }
     else if (mano1[0] == 10 && palos1[0] == 4 || mano1[0] == 10 && palos1[0] == 2 || mano1[0] == 10 && palos1[0] == 3 || mano1[0] == 10 && palos1[0] == 1)
     {
-        poder1[0] = 5;
+        poder1[0] = 5; // Los dieces
     }
     else if (mano1[0] == 7 && palos1[0] == 4 || mano1[0] == 7 && palos1[0] == 3)
     {
-        poder1[0] = 4;
+        poder1[0] = 4; // Los 7 menos de oro y espada
     }
     else if (mano1[0] == 6 && palos1[0] == 4 || mano1[0] == 6 && palos1[0] == 2 || mano1[0] == 6 && palos1[0] == 3 || mano1[0] == 6 && palos1[0] == 1)
     {
-        poder1[0] = 3;
+        poder1[0] = 3; // Los 6
     }
     else if (mano1[0] == 5 && palos1[0] == 1 || mano1[0] == 5 && palos1[0] == 2 || mano1[0] == 5 && palos1[0] == 3 || mano1[0] == 5 && palos1[0] == 4)
     {
-        poder1[0] = 2;
+        poder1[0] = 2; // Los 5
     }
     else if (mano1[0] == 4 && palos1[0] == 4 || mano1[0] == 4 && palos1[0] == 2 || mano1[0] == 4 && palos1[0] == 3 || mano1[0] == 4 && palos1[0] == 1)
     {
-        poder1[0] = 1;
+        poder1[0] = 1; // Los 4
     }
     //////////////////////////////////////////////////////////////////////
     if (mano1[1] == 1 && palos1[1] == 1)
@@ -436,11 +436,12 @@ void cartas::getPalos2()
     for (int i = 0; i < 3; i++)
         std::cout << "Palo: " << palos2[i] << "\n";
 }
-void cartas::getCartayPalo1()
+void cartas::getCartayPalo1(int opc, int opc1, int opc2)
 {
     // palos : 1.espada 2.oro 3.copa 4.basto.
     std::string nombrePalo;
-    for (int i = 0; i < 3; i++)
+    bool first_flag = false, second_flag = false, third_flag = false;
+    for (int i = 0; i < 3; i++) // Chequeador de palos y de 8, 9, 10, 11 y 12
     {
         if (palos1[i] == 1)
             nombrePalo = "Espada";
@@ -456,14 +457,84 @@ void cartas::getCartayPalo1()
             cartas1[i] = 11;
         if (cartas1[i] == 10)
             cartas1[i] = 12;
-        std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";
     }
+    if (opc == -1)
+    {
+        for (int i = 0; i < 3; i++)
+            std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";
+    }
+    // Después primera jugada
+    if (opc == 1)
+    { // Elijo primera carta
+        std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
+        std::cout << "Carta " << 3 << " : " << cartas1[2] << " de " << nombrePalo << "\n";
+        first_flag = true;
+    }
+    else if (opc == 2)
+    { // Elijo segunda carta
+        std::cout << "Carta " << 1 << " : " << cartas1[0] << " de " << nombrePalo << "\n";
+        std::cout << "Carta " << 3 << " : " << cartas1[2] << " de " << nombrePalo << "\n";
+        first_flag = true;
+    }
+    else if (opc == 3)
+    { // Elijo tercera carta
+        std::cout << "Carta " << 1 << " : " << cartas1[0] << " de " << nombrePalo << "\n";
+        std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
+        first_flag = true;
+    }
+
+    else if (opc == 1 && opc1 == 2 && first_flag == true)   //Elijo primera y segunda
+    {
+        std::cout << "Carta " << 3 << " : " << cartas1[2] << " de " << nombrePalo << "\n";
+        second_flag = true;
+    }
+    else if (opc == 1 && opc1 == 3 && first_flag == true)   //Elijo primera y tercera
+    {
+        std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
+        second_flag = true;
+    }
+    else if (opc == 2 && opc1 == 1 && first_flag == true)   //Elijo segunda y primera
+    {
+        std::cout << "Carta " << 3 << " : " << cartas1[2] << " de " << nombrePalo << "\n";
+        second_flag = true;
+    }
+    else if (opc == 2 && opc1 == 3 && first_flag == true)   //Elijo segunda y tercera
+    {
+        std::cout << "Carta " << 1 << " : " << cartas1[0] << " de " << nombrePalo << "\n";
+        second_flag = true;
+    }
+    else if (opc == 3 && opc1 == 2 && first_flag == true)   //Elijo tercera y segunda
+    {
+        std::cout << "Carta " << 1 << " : " << cartas1[0] << " de " << nombrePalo << "\n";
+        second_flag = true;
+    }
+    else if (opc == 3 && opc1 == 1 && first_flag == true)   //Elijo tercera y primera
+    {
+        std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
+        second_flag = true;
+    }
+
+    // std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";
 }
-void cartas::getCartayPalo2()
+void cartas::getCartayPalo2(int opc, int opc1, int opc2)
 {
     std::string nombrePalo;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++) // Chequeador de palos y de 8, 9, 10, 11 y 12
     {
-        std::cout << "Carta 2: " << cartas2[i] << " de " << palos2[i] << "\n";
+        if (palos2[i] == 1)
+            nombrePalo = "Espada";
+        if (palos2[i] == 2)
+            nombrePalo = "Oro";
+        if (palos2[i] == 3)
+            nombrePalo = "Copa";
+        if (palos2[i] == 4)
+            nombrePalo = "Basto";
+        if (cartas2[i] == 8)
+            cartas2[i] = 10;
+        if (cartas2[i] == 9)
+            cartas2[i] = 11;
+        if (cartas2[i] == 10)
+            cartas2[i] = 12;
     }
+    // std::cout << "Carta 2: " << cartas2[i] << " de " << palos2[i] << "\n";
 }
