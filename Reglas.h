@@ -16,6 +16,10 @@ public:
     reglas(int,int,int);
     int Envido1(int[3]);
     int Envido2(int[3]);
+<<<<<<< HEAD
     void Truco(int[3],int[3],int);
+=======
+    void Truco(int[3],int[3]);
+>>>>>>> 8d7b0ec454769c4bd2419c6e7e87bbc915def630
     int getTruco();
 };

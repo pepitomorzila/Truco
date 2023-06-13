@@ -13,6 +13,7 @@ protected:
 public:
     cartas();
     cartas(int[3],int[3],int[3],int[3]);
+<<<<<<< HEAD
     //cartas(int[3]);
     cartas(int[3]);
     void setCartas1(int[3]);
@@ -27,4 +28,13 @@ public:
     void getPalos2();
     void getCartayPalo1();
     void getCartayPalo2();
+=======
+    cartas(int[3]);
+    cartas(int[3]);
+    void setMano(int [3],int,int,int);
+    void setPoder(int[3],int[3], int[3], int[3]);
+    void setPalos1(int [3]);
+    void setPalos2(int [3]);
+
+>>>>>>> 8d7b0ec454769c4bd2419c6e7e87bbc915def630
 };
