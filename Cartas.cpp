@@ -205,7 +205,7 @@ void cartas::getCartayPalo1()
         if (cartas1[i] == 8) cartas1[i] = 10;
         if (cartas1[i] == 9) cartas1[i] = 11;
         if (cartas1[i] == 10) cartas1[i] = 12;
-        std::cout << "Carta 1: " << cartas1[i] << " de " << nombrePalo << "\n";
+        std::cout << "Carta "<<i+1<<" : " << cartas1[i] << " de " << nombrePalo << "\n";
     }
 }
 void cartas::getCartayPalo2()
