@@ -97,7 +97,7 @@ int main()
                 palos1[i] = random[i];
                 m.setPalos1(random);
             }
-            m.getCartayPalo1(opc,opc1,opc2);
+            m.getCartayPalo1(opc, opc1, opc2);
         }
     }
     do
@@ -176,32 +176,31 @@ int main()
                     if (b.envido() == 3)
                     {
                         cout << "El bot le ha cantado envido-envido-Falta envido\n";
-                    }
-
-                    cout << "\n1. Si desea aceptar el Falta envido\n2. Si desea rechazarlo\n";
-                    cin >> querer;
-                    if (m.Envido1() != 100 && querer == 2)
-                    {
-                        puntaje2 += 5;
-                    }
-                    else if (m.Envido1() != 100 && querer == 1)
-                    {
-                        cout << m.Envido1() << endl;
-                        cout << m.Envido2() << endl;
-                        if (m.Envido1() > m.Envido2())
+                        cout << "\n1. Si desea aceptar el Falta envido\n2. Si desea rechazarlo\n";
+                        cin >> querer;
+                        if (m.Envido1() != 100 && querer == 2)
                         {
-                            cout << "Has ganado el envido\n";
-                            cout << "Tus tantos son : " << m.Envido1() << "\n";
-                            cout << "los tantos del rival son: " << m.Envido2() << "\n";
-                            puntaje1 = puntaje1 + (max_puntos - puntaje2);
+                            puntaje2 += 5;
                         }
-                        else if (m.Envido1() < m.Envido2())
+                        else if (m.Envido1() != 100 && querer == 1)
                         {
-                            cout << "Has perdido el envido\n";
-                            cout << "Tus tantos son : " << m.Envido1() << "\n";
-                            cout << "los tantos del rival son: " << m.Envido2() << "\n";
-                            cout << "" << endl;
-                            puntaje2 = puntaje2 + (max_puntos - puntaje1);
+                            cout << m.Envido1() << endl;
+                            cout << m.Envido2() << endl;
+                            if (m.Envido1() > m.Envido2())
+                            {
+                                cout << "Has ganado el envido\n";
+                                cout << "Tus tantos son : " << m.Envido1() << "\n";
+                                cout << "los tantos del rival son: " << m.Envido2() << "\n";
+                                puntaje1 = puntaje1 + (max_puntos - puntaje2);
+                            }
+                            else if (m.Envido1() < m.Envido2())
+                            {
+                                cout << "Has perdido el envido\n";
+                                cout << "Tus tantos son : " << m.Envido1() << "\n";
+                                cout << "los tantos del rival son: " << m.Envido2() << "\n";
+                                cout << "" << endl;
+                                puntaje2 = puntaje2 + (max_puntos - puntaje1);
+                            }
                         }
                     }
                     if (b.envido() == 0)
@@ -264,8 +263,31 @@ int main()
                     }
                 }
             }
-            break;
-        case 2:
+            else if (b.envido() == 0)
+            {
+                cout << "El bot no quiso el envido, ganas un punto.\n";
+                puntaje1++;
+            }
+            else if (b.envido() == 3)
+            {
+                cout << "El bot a cantado real-envido\n1. Aceptar\n2. No aceptar\n";
+                cin >> querer;
+                cout << "Deseas cantar falta envido?\n1. Cantar\n2. No cantar\n";
+                cin >> redoblar;
+                switch (redoblar)
+                {
+                case 1:
+                    
+                    break;
+
+                default:
+                    break;
+                }
+            }
+            cout << "tu puntaje es: " << puntaje1 << endl;
+            cout << "el puntaje del bot es: " <<endl;
+
+            case 2:
             if (b.envido() == 3)
             {
                 cout << "El jugador do le ha cantado Real envido-Falta envido\n";
@@ -327,6 +349,9 @@ int main()
                     puntaje1 += 1;
                 }
             }
+            cout << "tu puntaje es: " << puntaje1 << endl;
+            cout << "el puntaje del bot es: " <<endl;
+
             break;
         case 3:
             if (b.cantarenvido() == 1)
@@ -374,8 +399,12 @@ int main()
             cout << "Ingrese una opcion valida.\n";
             break;
         }
+       
 
     } while (choice_env < 1 || choice_env > 5);
+    cout << "tu puntaje es: " << puntaje1 << endl;
+            cout << "el puntaje del bot es: " <<endl;
+
 
     cout << "Desea cantar truco?\n\n1. Si\n2. No\n";
     do
@@ -388,18 +417,18 @@ int main()
             {
                 if (b.decidirTruco() == 1) // El bot acepta truco
                 {
-                    m.getCartayPalo1(opc,opc1,opc2);
-                    cout<<"Que carta desea tirar?\n";
-                    cin>>opc;
+                    m.getCartayPalo1(opc, opc1, opc2);
+                    cout << "Que carta desea tirar?\n";
+                    cin >> opc;
                     m.Juego1();               // Se tiran las primeras cartas
                     if (b.cantarTruco() == 0) // El bot no canta re-truco
                     {
-                        m.getCartayPalo1(opc,opc1,opc2);
-                        cout<<"Que carta desea tirar?\n";
-                        cin>>opc1;
-                        m.getCartayPalo1(opc,opc1,opc2);
-                        cout<<"Que carta desea tirar?\n";
-                        cin>>opc1;
+                        m.getCartayPalo1(opc, opc1, opc2);
+                        cout << "Que carta desea tirar?\n";
+                        cin >> opc1;
+                        m.getCartayPalo1(opc, opc1, opc2);
+                        cout << "Que carta desea tirar?\n";
+                        cin >> opc1;
                         m.Juego2();                                                                                  // Se juega la segunda mano
                         if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2)) // Comparamos si las dos cartas que tiró el usuario son mayores a las del bot, por ende que ganó el usuario
                         {
@@ -416,9 +445,9 @@ int main()
 
                         if (b.cantarTruco() == 0 && truco_check == false) // El bot no canta re-truco
                         {
-                            m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc2;
+                            m.getCartayPalo1(opc, opc1, opc2);
+                            cout << "Que carta desea tirar?\n";
+                            cin >> opc2;
                             m.Juego3(); // Se tiran las ultimas cartas
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                             {
@@ -449,9 +478,9 @@ int main()
                             cin >> des_retruco;
                             if (des_retruco == 1) // Quise
                             {
-                                m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc2;
+                                m.getCartayPalo1(opc, opc1, opc2);
+                                cout << "Que carta desea tirar?\n";
+                                cin >> opc2;
                                 m.Juego3();
                                 if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) < 3))
                                 {
@@ -478,9 +507,9 @@ int main()
                             {
                                 if (b.decidirTruco() == 1) // El bot aceptó el vale-cuatro
                                 {
-                                    m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc2;
+                                    m.getCartayPalo1(opc, opc1, opc2);
+                                    cout << "Que carta desea tirar?\n";
+                                    cin >> opc2;
                                     m.Juego3(); // Se tiran las ultimas cartas
                                     if (((m.getJuego1_1() + m.getJuego2_1() + m.getJuego3_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2() + m.getJuego3_2()) < 3))
                                     {
@@ -533,19 +562,19 @@ int main()
                         }
                         else if (b.cantarTruco() == 1)
                         {
-                            m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc;
+                            m.getCartayPalo1(opc, opc1, opc2);
+                            cout << "Que carta desea tirar?\n";
+                            cin >> opc;
                             m.Juego1();
-                             m.getCartayPalo1(opc,opc1,opc2);
-                        cout<<"Que carta desea tirar?\n";
-                        cin>>opc1;
-                        m.getCartayPalo1(opc,opc1,opc2);
-                        cout<<"Que carta desea tirar?\n";
-                        cin>>opc1;
-                        m.getCartayPalo1(opc,opc1,opc2);
-                        cout<<"Que carta desea tirar?\n";
-                        cin>>opc1;
+                            m.getCartayPalo1(opc, opc1, opc2);
+                            cout << "Que carta desea tirar?\n";
+                            cin >> opc1;
+                            m.getCartayPalo1(opc, opc1, opc2);
+                            cout << "Que carta desea tirar?\n";
+                            cin >> opc1;
+                            m.getCartayPalo1(opc, opc1, opc2);
+                            cout << "Que carta desea tirar?\n";
+                            cin >> opc1;
                             m.Juego2();
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
                             {
@@ -562,9 +591,9 @@ int main()
                         }
                         if (truco_check == false)
                         {
-                            m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc2;
+                            m.getCartayPalo1(opc, opc1, opc2);
+                            cout << "Que carta desea tirar?\n";
+                            cin >> opc2;
                             m.Juego3();
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                             {
@@ -592,9 +621,9 @@ int main()
                     }
                     else if (des_redoblar == 0)
                     {
-                        m.getCartayPalo1(opc,opc1,opc2);
-                    cout<<"Que carta desea tirar?\n";
-                    cin>>opc;
+                        m.getCartayPalo1(opc, opc1, opc2);
+                        cout << "Que carta desea tirar?\n";
+                        cin >> opc;
                         m.Juego1();
                         cout << "Desea cantar vale 4?\n\n1. Si\n2. No\n";
                         cin >> des_redoblar;
@@ -606,9 +635,9 @@ int main()
                             }
                             else if (b.cantarTruco() == 1)
                             {
-                                m.getCartayPalo1(opc,opc1,opc2);
-                                cout<<"Que carta desea tirar?\n";
-                                cin>>opc1;
+                                m.getCartayPalo1(opc, opc1, opc2);
+                                cout << "Que carta desea tirar?\n";
+                                cin >> opc1;
                                 m.Juego2();
                                 if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
                                 {
@@ -625,9 +654,9 @@ int main()
                             }
                             if (truco_check == false)
                             {
-                                m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc2;
+                                m.getCartayPalo1(opc, opc1, opc2);
+                                cout << "Que carta desea tirar?\n";
+                                cin >> opc2;
                                 m.Juego3();
                                 if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                                 {
@@ -656,9 +685,9 @@ int main()
                     }
                     else if (des_redoblar == 0)
                     {
-                        m.getCartayPalo1(opc,opc1,opc2);
-                        cout<<"Que carta desea tirar?\n";
-                        cin>>opc1;
+                        m.getCartayPalo1(opc, opc1, opc2);
+                        cout << "Que carta desea tirar?\n";
+                        cin >> opc1;
                         m.Juego2();
                         if (((m.getJuego1_1() + m.getJuego2_1()) == 2) && ((m.getJuego1_2() + m.getJuego2_2()) < 2))
                         {
@@ -677,9 +706,9 @@ int main()
                         cin >> des_redoblar;
                         if (des_redoblar == 0)
                         {
-                            m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc2;
+                            m.getCartayPalo1(opc, opc1, opc2);
+                            cout << "Que carta desea tirar?\n";
+                            cin >> opc2;
                             m.Juego3();
                             if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                             {
@@ -714,9 +743,9 @@ int main()
                             {
                                 if (truco_check == false)
                                 {
-                                    m.getCartayPalo1(opc,opc1,opc2);
-                             cout<<"Que carta desea tirar?\n";
-                             cin>>opc2;
+                                    m.getCartayPalo1(opc, opc1, opc2);
+                                    cout << "Que carta desea tirar?\n";
+                                    cin >> opc2;
                                     m.Juego3();
                                     if (((m.getJuego1_1() + m.getJuego2_1()) == 3) && ((m.getJuego1_2() + m.getJuego2_2()) < 3))
                                     {
@@ -746,27 +775,24 @@ int main()
                     }
                 }
             }
+            cout << "tu puntaje es: " << puntaje1 << endl;
+            cout << "el puntaje del bot es: " <<endl;
+
             break;
         case 2:
-        m.getCartayPalo1(opc,opc1,opc2);
-                    cout<<"Que carta desea tirar?\n";
-                    cin>>opc;
+            m.getCartayPalo1(opc, opc1, opc2);
+            cout << "Que carta desea tirar?\n";
+            cin >> opc;
             m.Juego1();
-            
+            cout << "tu puntaje es: " << puntaje1 << endl;
+            cout << "el puntaje del bot es: " <<endl;
+
+
             break;
         default:
             break;
         }
     } while (tru < 1 || tru > 2);
-
-
-
-
-
-
-
-
-
 
     return 0;
 }

@@ -457,12 +457,14 @@ void cartas::getCartayPalo1(int opc, int opc1, int opc2)
             cartas1[i] = 11;
         if (cartas1[i] == 10)
             cartas1[i] = 12;
-    }
-    if (opc == -1)
-    {
-        for (int i = 0; i < 3; i++)
+            
             std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";
     }
+   // if (opc == -1)
+    //{
+       // for (int i = 0; i < 3; i++)
+          //  std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";
+   // }
     // Después primera jugada
     if (opc == 1)
     { // Elijo primera carta
