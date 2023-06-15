@@ -3,10 +3,6 @@
 cartas::cartas()
 {
 }
-/*cartas::cartas(int _cartas1[3])
-{
-    for (int i = 0; i < 3; i++) cartas1[i] = _cartas1[i];
-}*/
 cartas::cartas(int _cartas2[3])
 {
     for (int i = 0; i < 3; i++)
@@ -442,30 +438,17 @@ void cartas::getCartayPalo1(int opc, int opc1, int opc2)
     std::string nombrePalo;
     bool first_flag = false, second_flag = false, third_flag = false;
     for (int i = 0; i < 3; i++) // Chequeador de palos y de 8, 9, 10, 11 y 12
-    {
-        if (palos1[i] == 1)
-            nombrePalo = "Espada";
-        if (palos1[i] == 2)
-            nombrePalo = "Oro";
-        if (palos1[i] == 3)
-            nombrePalo = "Copa";
-        if (palos1[i] == 4)
-            nombrePalo = "Basto";
-        if (cartas1[i] == 8)
-            cartas1[i] = 10;
-        if (cartas1[i] == 9)
-            cartas1[i] = 11;
-        if (cartas1[i] == 10)
-            cartas1[i] = 12;
-            
-            std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";
-    }
-   // if (opc == -1)
-    //{
-       // for (int i = 0; i < 3; i++)
-          //  std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";
-   // }
-    // Después primera jugada
+        {
+            if (palos1[i] == 1) nombrePalo = "Espada";
+            if (palos1[i] == 2) nombrePalo = "Oro";
+            if (palos1[i] == 3) nombrePalo = "Copa";
+            if (palos1[i] == 4) nombrePalo = "Basto";
+            if (cartas1[i] == 8) cartas1[i] = 10;
+            if (cartas1[i] == 9) cartas1[i] = 11;
+            if (cartas1[i] == 10) cartas1[i] = 12;
+            if (opc == -1 && opc1 == -1 && opc2 == -1) std::cout << "Carta " << i + 1 << " : " << cartas1[i] << " de " << nombrePalo << "\n";  
+        }
+    std::cout << "\n";
     if (opc == 1)
     { // Elijo primera carta
         std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
@@ -484,33 +467,32 @@ void cartas::getCartayPalo1(int opc, int opc1, int opc2)
         std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
         first_flag = true;
     }
-
-    else if (opc == 1 && opc1 == 2 && first_flag == true)   //Elijo primera y segunda
+    else if (opc == 1 && opc1 == 2 && first_flag == true) // Elijo primera y segunda
     {
         std::cout << "Carta " << 3 << " : " << cartas1[2] << " de " << nombrePalo << "\n";
         second_flag = true;
     }
-    else if (opc == 1 && opc1 == 3 && first_flag == true)   //Elijo primera y tercera
+    else if (opc == 1 && opc1 == 3 && first_flag == true) // Elijo primera y tercera
     {
         std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
         second_flag = true;
     }
-    else if (opc == 2 && opc1 == 1 && first_flag == true)   //Elijo segunda y primera
+    else if (opc == 2 && opc1 == 1 && first_flag == true) // Elijo segunda y primera
     {
         std::cout << "Carta " << 3 << " : " << cartas1[2] << " de " << nombrePalo << "\n";
         second_flag = true;
     }
-    else if (opc == 2 && opc1 == 3 && first_flag == true)   //Elijo segunda y tercera
+    else if (opc == 2 && opc1 == 3 && first_flag == true) // Elijo segunda y tercera
     {
         std::cout << "Carta " << 1 << " : " << cartas1[0] << " de " << nombrePalo << "\n";
         second_flag = true;
     }
-    else if (opc == 3 && opc1 == 2 && first_flag == true)   //Elijo tercera y segunda
+    else if (opc == 3 && opc1 == 2 && first_flag == true) // Elijo tercera y segunda
     {
         std::cout << "Carta " << 1 << " : " << cartas1[0] << " de " << nombrePalo << "\n";
         second_flag = true;
     }
-    else if (opc == 3 && opc1 == 1 && first_flag == true)   //Elijo tercera y primera
+    else if (opc == 3 && opc1 == 1 && first_flag == true) // Elijo tercera y primera
     {
         std::cout << "Carta " << 2 << " : " << cartas1[1] << " de " << nombrePalo << "\n";
         second_flag = true;
@@ -538,7 +520,7 @@ void cartas::getCartayPalo2(int opc, int opc1, int opc2)
         if (cartas2[i] == 10)
             cartas2[i] = 12;
     }
-    
-    for (int i = 0; i <= 3; i++) std::cout << "Carta 2: " << cartas2[i] << " de " << palos2[i] << "\n";
-    
+
+    for (int i = 0; i <= 3; i++)
+        std::cout << "Carta 2: " << cartas2[i] << " de " << palos2[i] << "\n";
 }

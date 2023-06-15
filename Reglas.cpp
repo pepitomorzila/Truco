@@ -389,12 +389,15 @@ void reglas::Juego1()
 
     if (mano1 == 1)
     {
+        
         valor1_juego1 = 1;
     }
     else if (mano2 == 1)
     {
+        
         valor1_juego2 = 1;
     }
+    
 }
 void reglas::Juego2()
 {
@@ -419,10 +422,12 @@ void reglas::Juego2()
 
     if (mano1 == 1)
     {
+        
         valor2_juego1 = 1;
     }
     else if (mano2 == 1)
     {
+        
         valor2_juego2 = 1;
     }
 }
@@ -449,10 +454,12 @@ void reglas::Juego3()
 
     if (mano1 == 1)
     {
+       
         valor3_juego1 = 1;
     }
     else if (mano2 == 1)
     {
+        
         valor3_juego2 = 1;
     }
 }

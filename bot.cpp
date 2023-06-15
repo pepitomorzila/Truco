@@ -29,14 +29,10 @@ int bot::cantarenvido()
 int bot::envido()
 {
     int desc = 1 + rand() % 5;
-    if (desc == 1)
-        decision = 1;
+    if (desc == 1) decision = 1;
     else if(desc == 2) decision == 2;
-    else if (desc == 3)
-        decision = 3;
-    else if(desc == 4 ||desc == 5 )
-        decision = 0;
-
+    else if (desc == 3) decision = 3;
+    else if(desc == 4 ||desc == 5 ) decision = 0;
     return decision;
 }
 
@@ -55,9 +51,9 @@ int bot::decidirTruco()
 int bot::cantarTruco()
 {
     int desc = 1 + rand() % 8;
-    if (desc == 2 || desc == 1 || desc == 4)
+    if (desc == 1 || desc == 2 || desc == 3)
         decision = 1;
-    else if (desc == 3 || desc == 5 || desc == 6 || desc == 7 || desc == 8)
+    else if (desc == 4 || desc == 5 || desc == 6 || desc == 7 || desc == 8)
     {
         decision = 0;
     }
