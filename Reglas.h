@@ -32,3 +32,4 @@ public:
     int getJuego3_1();
     int getJuego3_2();
 };
+

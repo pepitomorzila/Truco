@@ -82,6 +82,7 @@ int main()
         else if (opcion == 1)
         {
             band = true;
+            /*
             for (int i = 0; i < 3; ++i) // se generan aleatoriamente tus cartas
             {
                 random[i] = 1 + rand() % 10;
@@ -107,6 +108,7 @@ int main()
                 palos2[i] = random[i];
                 m.setPalos2(random);
             }
+            */
         }
     }
     do

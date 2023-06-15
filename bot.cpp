@@ -7,11 +7,6 @@ bot::bot()
 {
 }
 
-bot::bot(int _decision)
-{
-    decision = _decision;
-}
-
 bot::bot(int _cartas1[3], int _cartas2[3], int _palos1[3], int _palos2[3], int _decision) : cartas(cartas1, cartas2, palos1, palos2)
 {
     decision = _decision;

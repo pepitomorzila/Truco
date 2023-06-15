@@ -3,11 +3,6 @@
 cartas::cartas()
 {
 }
-cartas::cartas(int _cartas2[3])
-{
-    for (int i = 0; i < 3; i++)
-        cartas2[i] = _cartas2[i];
-}
 
 cartas::cartas(int _cartas1[3], int _cartas2[3], int _palos1[3], int _palos2[3])
 {
