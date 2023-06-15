@@ -59,7 +59,7 @@ int main()
     int opc = -1, opc1 = -1, opc2 = -1, tru, opcion, des_redoblar, choice_env;
     int n = 3, k = 1;
     int max_puntos, choice_punto;
-    int random[3], cartas1[3], palos1[3],cartas2[3],palos2[3];
+    int random[3], cartas1[3], palos1[3], cartas2[3], palos2[3];
     bool band = false, truco_check = false;
     int puntaje1 = 0, puntaje2 = 0;
     int jugada, querer, redoblar, des_retruco, while_flag;
@@ -67,8 +67,10 @@ int main()
     cout << "BIENVENIDO A NUESTRA VERSION DEL CLASICO JUEGO TRUCO" << endl;
     cout << "\n1. Para jugar a 15 puntos\n2. Para jugar a 30 puntos.\n";
     cin >> choice_punto;
-    if (choice_punto == 1) max_puntos = 15;
-    else if(choice_punto == 2) max_puntos = 30;
+    if (choice_punto == 1)
+        max_puntos = 15;
+    else if (choice_punto == 2)
+        max_puntos = 30;
     while (band == false)
     {
         cout << "-1. Si quiere jugar\n-2. Si desea leer las reglas primero" << endl;
@@ -80,7 +82,7 @@ int main()
         else if (opcion == 1)
         {
             band = true;
-            for (int i = 0; i < 3; ++i)//se generan aleatoriamente tus cartas
+            for (int i = 0; i < 3; ++i) // se generan aleatoriamente tus cartas
             {
                 random[i] = 1 + rand() % 10;
                 cartas1[i] = random[i];
@@ -93,7 +95,7 @@ int main()
                 m.setPalos1(random);
             }
             m.getCartayPalo1(opc, opc1, opc2);
-            for (int i = 0; i < 3; ++i)//se generan aleatoriamente las cartas del bot
+            for (int i = 0; i < 3; ++i) // se generan aleatoriamente las cartas del bot
             {
                 random[i] = 1 + rand() % 10;
                 cartas2[i] = random[i];
@@ -108,8 +110,32 @@ int main()
         }
     }
     do
-    
     {
+        for (int i = 0; i < 3; ++i) // se generan aleatoriamente tus cartas
+        {
+            random[i] = 1 + rand() % 10;
+            cartas1[i] = random[i];
+            m.setCartas1(random);
+        }
+        for (int i = 0; i < 3; ++i)
+        {
+            random[i] = 1 + rand() % 4;
+            palos1[i] = random[i];
+            m.setPalos1(random);
+        }
+        m.getCartayPalo1(opc, opc1, opc2);
+        for (int i = 0; i < 3; ++i) // se generan aleatoriamente las cartas del bot
+        {
+            random[i] = 1 + rand() % 10;
+            cartas2[i] = random[i];
+            m.setCartas2(random);
+        }
+        for (int i = 0; i < 3; ++i)
+        {
+            random[i] = 1 + rand() % 4;
+            palos2[i] = random[i];
+            m.setPalos2(random);
+        }
         do
         {
             while_flag = false;
@@ -124,25 +150,26 @@ int main()
                 switch (choice_env)
                 {
                 case 1:
-                    if (b.envido() == 1){
+                    if (b.envido() == 1)
+                    {
                         cout << "El bot quiso el envido\n";
                         cout << m.Envido1() << endl;
-                                cout << m.Envido2() << endl;
-                                if (m.Envido1() > m.Envido2())
-                                {
-                                    cout << "Has ganado el envido\n";
-                                    cout << "Tus tantos son : " << m.Envido1() << "\n";
-                                    cout << "los tantos del rival son: " << m.Envido2() << "\n";
-                                    puntaje1 += 2;
-                                }
-                                else if (m.Envido1() < m.Envido2())
-                                {
-                                    cout << "Has perdido el envido\n";
-                                    cout << "Tus tantos son : " << m.Envido1() << "\n";
-                                    cout << "los tantos del rival son: " << m.Envido2() << "\n";
-                                    cout << "" << endl;
-                                    puntaje2 += 2;
-                                }
+                        cout << m.Envido2() << endl;
+                        if (m.Envido1() > m.Envido2())
+                        {
+                            cout << "Has ganado el envido\n";
+                            cout << "Tus tantos son : " << m.Envido1() << "\n";
+                            cout << "los tantos del rival son: " << m.Envido2() << "\n";
+                            puntaje1 += 2;
+                        }
+                        else if (m.Envido1() < m.Envido2())
+                        {
+                            cout << "Has perdido el envido\n";
+                            cout << "Tus tantos son : " << m.Envido1() << "\n";
+                            cout << "los tantos del rival son: " << m.Envido2() << "\n";
+                            cout << "" << endl;
+                            puntaje2 += 2;
+                        }
                     }
                     if (b.envido() == 2)
                     {
@@ -336,26 +363,25 @@ int main()
                                     }
                                 }
                                 break;
-                                case 2:
+                            case 2:
                                 cout << m.Envido1() << endl;
-                                    cout << m.Envido2() << endl;
-                                    if (m.Envido1() > m.Envido2())
-                                    {
-                                        cout << "Has ganado el envido\n";
-                                        cout << "Tus tantos son : " << m.Envido1() << "\n";
-                                        cout << "los tantos del rival son: " << m.Envido2() << "\n";
-                                        puntaje1 = puntaje1 + 5;
-                                    }
-                                    else if (m.Envido1() < m.Envido2())
-                                    {
-                                        cout << "Has perdido el envido\n";
-                                        cout << "Tus tantos son : " << m.Envido1() << "\n";
-                                        cout << "los tantos del rival son: " << m.Envido2() << "\n";
-                                        cout << "" << endl;
-                                        puntaje2 = puntaje2 + 5;
-                                    }
+                                cout << m.Envido2() << endl;
+                                if (m.Envido1() > m.Envido2())
+                                {
+                                    cout << "Has ganado el envido\n";
+                                    cout << "Tus tantos son : " << m.Envido1() << "\n";
+                                    cout << "los tantos del rival son: " << m.Envido2() << "\n";
+                                    puntaje1 = puntaje1 + 5;
+                                }
+                                else if (m.Envido1() < m.Envido2())
+                                {
+                                    cout << "Has perdido el envido\n";
+                                    cout << "Tus tantos son : " << m.Envido1() << "\n";
+                                    cout << "los tantos del rival son: " << m.Envido2() << "\n";
+                                    cout << "" << endl;
+                                    puntaje2 = puntaje2 + 5;
+                                }
 
-                            
                                 break;
                             }
                         }
@@ -501,23 +527,23 @@ int main()
                     throw "Elija un valor menor o igual a 5.";
                 switch (tru)
                 {
-                case 1:                       // El usuario canta truco
+                case 1: // El usuario canta truco
                     b.cantarTruco();
                     if (b.cantarTruco() == 0) // El bot no canta re-truco
                     {
                         b.decidirTruco();
                         if (b.decidirTruco() == 1) // El bot acepta truco
                         {
-                            cout<<"el bot acepta el truco\n ";
+                            cout << "el bot acepta el truco\n ";
                             m.getCartayPalo1(opc, opc1, opc2);
                             cout << "Que carta desea tirar?\n";
                             cin >> opc;
-                            m.Juego1();               // Se tiran las primeras cartas
+                            m.Juego1(); // Se tiran las primeras cartas
                             b.cantarTruco();
                             if (b.cantarTruco() == 0) // El bot no canta re-truco
                             {
-                            
-                                cout<<"\n\naca llego negri"<<endl;
+
+                                cout << "\n\naca llego negri" << endl;
                                 m.getCartayPalo1(opc, opc1, opc2);
                                 cout << "Que carta desea tirar?\n";
                                 cin >> opc1;
@@ -638,7 +664,8 @@ int main()
                         {
                             cout << "El bot no acepto el truco" << endl;
                             puntaje1++;
-                            cout << "\nTus puntos: " << puntaje1 << "\n" << "\nPuntos del bot: " << puntaje2 << "\n";
+                            cout << "\nTus puntos: " << puntaje1 << "\n"
+                                 << "\nPuntos del bot: " << puntaje2 << "\n";
                         }
                     }
                     else if (b.cantarTruco() == 1)
@@ -656,7 +683,6 @@ int main()
                                 {
                                     puntaje1 += 3;
                                     cout << "El bot no acepto el vale 4, ganas 3 puntos\n";
-
                                 }
                                 else if (b.cantarTruco() == 1)
                                 {
@@ -711,7 +737,8 @@ int main()
                                         truco_check = true;
                                     }
                                 }
-                                cout << "\nTus puntos: " << puntaje1 << "\n" << "\nPuntos del bot: " << puntaje2 << "\n";
+                                cout << "\nTus puntos: " << puntaje1 << "\n"
+                                     << "\nPuntos del bot: " << puntaje2 << "\n";
                             }
                             else if (des_redoblar == 0)
                             {
@@ -776,7 +803,8 @@ int main()
                                         }
                                     }
                                 }
-                                cout << "\nTus puntos: " << puntaje1 << "\n" << "\nPuntos del bot: " << puntaje2 << "\n";
+                                cout << "\nTus puntos: " << puntaje1 << "\n"
+                                     << "\nPuntos del bot: " << puntaje2 << "\n";
                             }
                             else if (des_redoblar == 0)
                             {
@@ -868,7 +896,8 @@ int main()
                                     }
                                 }
                             }
-                            cout << "\nTus puntos: " << puntaje1 << "\n" << "\nPuntos del bot: " << puntaje2 << "\n";
+                            cout << "\nTus puntos: " << puntaje1 << "\n"
+                                 << "\nPuntos del bot: " << puntaje2 << "\n";
                         }
                     }
                     while_flag = true;
@@ -879,19 +908,20 @@ int main()
                     cin >> opc;
                     m.Juego1();
                     while_flag = true;
-                    cout << "\nTus puntos: " << puntaje1 << "\n" << "\nPuntos del bot: " << puntaje2 << "\n";
+                    cout << "\nTus puntos: " << puntaje1 << "\n"
+                         << "\nPuntos del bot: " << puntaje2 << "\n";
                     break;
                 default:
                     while_flag = true;
                     break;
                 }
             }
-            catch(const char* dato)
+            catch (const char *dato)
             {
                 cout << dato << endl;
             }
             incremento_partidas++;
         } while (while_flag = false);
-    }while(incremento_partidas <= max_puntos || puntaje1 <= max_puntos || puntaje2 <= max_puntos);
-    return 0; 
+    } while (incremento_partidas <= max_puntos || puntaje1 <= max_puntos || puntaje2 <= max_puntos);
+    return 0;
 }

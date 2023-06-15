@@ -17,18 +17,6 @@ reglas::reglas(int _cartas1[3], int _cartas2[3], int _palos1[3], int _palos2[3],
     valor3_juego2 = _valor3_juego2;
 }
 
-reglas::reglas(int _tantos1, int _tantos2, int _valor1_juego1, int _valor1_juego2, int _valor2_juego1, int _valor2_juego2, int _valor3_juego1, int _valor3_juego2)
-{
-    tantos1 = _tantos1;
-    tantos2 = _tantos2;
-    valor1_juego1 = _valor1_juego1;
-    valor1_juego2 = _valor1_juego2;
-    valor2_juego1 = _valor2_juego1;
-    valor2_juego2 = _valor2_juego2;
-    valor3_juego1 = _valor3_juego1;
-    valor3_juego2 = _valor3_juego2;
-}
-
 int reglas::Envido1()
 {
     tantos1 = 0;
