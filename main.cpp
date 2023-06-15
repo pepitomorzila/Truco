@@ -112,6 +112,7 @@ int main()
             case 1:
                 if (b.envido() == 1){
                     cout << "El bot quiso el envido\n";
+                    if (b.envido())
                 }
 
 
