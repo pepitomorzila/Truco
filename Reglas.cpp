@@ -206,156 +206,156 @@ int reglas::Envido2()
         // todas dsitintos
         if (palos2[0] != palos2[1] && palos2[0] != palos2[2] && palos2[1] != palos2[2] && band == false)
         {
-            tantos1 = 0;
+            tantos2 = 0;
             band = true;
         }
         // 0 y 1 no negras
         else if (palos2[0] == palos2[1] && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[1] + 20;
+            tantos2 = cartas2[0] + cartas2[1] + 20;
             band = true;
         }
         // 0 y 2 no negras
         else if (palos2[0] == palos2[2] && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[2] + 20;
+            tantos2 = cartas2[0] + cartas2[2] + 20;
             band = true;
         }
         // 0 negra y 1 no
         else if (palos2[0] == palos2[1] && cartas2[0] == 10 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[1] + 10;
+            tantos2 = cartas2[0] + cartas2[1] + 10;
             band = true;
         }
         // 0 negra y 1 no
         else if (palos2[0] == palos2[1] && cartas2[0] == 11 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[1] + 9;
+            tantos2 = cartas2[0] + cartas2[1] + 9;
             band = true;
         }
         // 0 negra y 1 no
         else if (palos2[0] == palos2[1] && cartas2[0] == 12 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[1] + 8;
+            tantos2 = cartas2[0] + cartas2[1] + 8;
             band = true;
         }
 
         // 0 negra y 2 no
         else if (palos2[0] == palos2[2] && cartas2[0] == 10 && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[2] + 10;
+            tantos2 = cartas2[0] + cartas2[2] + 10;
             band = true;
         }
         // 0 negra y 2 no
         else if (palos2[0] == palos2[2] && cartas2[0] == 11 && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[2] + 9;
+            tantos2 = cartas2[0] + cartas2[2] + 9;
             band = true;
         }
         // 0 negra y 2 no
         else if (palos2[0] == palos2[2] && cartas2[0] == 12 && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[2] + 8;
+            tantos2 = cartas2[0] + cartas2[2] + 8;
             band = true;
         }
         // o no y 1 negra
         else if (palos2[0] == palos2[1] && cartas2[1] == 10 && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[1] + 10;
+            tantos2 = cartas2[0] + cartas2[1] + 10;
             band = true;
         }
         // o no y 1 negra
         else if (palos2[0] == palos2[1] && cartas2[1] == 11 && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[1] + 9;
+            tantos2 = cartas2[0] + cartas2[1] + 9;
             band = true;
         }
         // o no y 1 negra
         else if (palos2[0] == palos2[1] && cartas2[1] == 12 && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[1] + 8;
+            tantos2 = cartas2[0] + cartas2[1] + 8;
             band = true;
         }
         // 0 no y 2 negra
         else if (palos2[0] == palos2[2] && cartas2[2] == 10 && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[2] + 10;
+            tantos2 = cartas2[0] + cartas2[2] + 10;
             band = true;
         }
         // 0 no y 2 negra
         else if (palos2[0] == palos2[2] && cartas2[2] == 11 && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[2] + 9;
+            tantos2 = cartas2[0] + cartas2[2] + 9;
             band = true;
         }
 
         // 0 no y 2 negra
         else if (palos2[0] == palos2[2] && cartas2[2] == 12 && cartas2[0] != 10 && cartas2[0] != 11 && cartas2[0] != 12 && band == false)
         {
-            tantos1 = cartas2[0] + cartas2[2] + 8;
+            tantos2 = cartas2[0] + cartas2[2] + 8;
             band = true;
         }
         // 1 negra y 2 no
         else if (palos2[1] == palos2[2] && cartas2[1] == 10 && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && band == false)
         {
-            tantos1 = cartas2[1] + cartas2[2] + 10;
+            tantos2 = cartas2[1] + cartas2[2] + 10;
             band = true;
         }
         // 1 negra y 2 no
         else if (palos2[1] == palos2[2] && cartas2[1] == 11 && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && band == false)
         {
-            tantos1 = cartas2[1] + cartas2[2] + 9;
+            tantos2 = cartas2[1] + cartas2[2] + 9;
             band = true;
         }
         // 1 negra y 2 no
         else if (palos2[1] == palos2[2] && cartas2[1] == 12 && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && band == false)
         {
-            tantos1 = cartas2[1] + cartas2[2] + 8;
+            tantos2 = cartas2[1] + cartas2[2] + 8;
             band = true;
         }
 
         // 1 y 2 no negras
         else if (palos2[1] == palos2[2] && cartas2[2] != 10 && cartas2[2] != 11 && cartas2[2] != 12 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[1] + cartas2[2] + 20;
+            tantos2 = cartas2[1] + cartas2[2] + 20;
             band = true;
         }
 
         // 1 no y 2 negra
         else if (palos2[1] == palos2[2] && cartas2[2] == 10 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[1] + cartas2[2] + 10;
+            tantos2 = cartas2[1] + cartas2[2] + 10;
             band = true;
         }
 
         // 1 no y 2 negra
         else if (palos2[1] == palos2[2] && cartas2[2] == 11 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[1] + cartas2[2] + 9;
+            tantos2 = cartas2[1] + cartas2[2] + 9;
             band = true;
         }
         // 1 no y 2 negra
         else if (palos2[1] == palos2[2] && cartas2[2] == 12 && cartas2[1] != 10 && cartas2[1] != 11 && cartas2[1] != 12 && band == false)
         {
-            tantos1 = cartas2[1] + cartas2[2] + 8;
+            tantos2 = cartas2[1] + cartas2[2] + 8;
             band = true;
         }
         //
         // 0 y 2 negras
         else if (palos2[0] == palos2[2] && cartas2[0] == 10 || cartas2[0] == 11 || cartas2[0] == 12 && cartas2[2] == 10 || cartas2[2] == 11 || cartas2[2] == 12 || band == false)
         {
-            tantos1 = 20;
+            tantos2 = 20;
             band = true;
         }
         else if (palos2[0] == palos2[1] && cartas2[0] == 10 || cartas2[0] == 11 || cartas2[0] == 12 && cartas2[1] == 10 || cartas2[1] == 11 || cartas2[1] == 12 || band == false)
         {
-            tantos1 = 20;
+            tantos2 = 20;
             band = true;
         }
         // 1 y 2 negras
         else if (palos2[1] == palos2[2] && cartas2[2] == 10 || cartas2[2] == 11 || cartas2[2] == 12 && cartas2[1] == 10 || cartas2[1] == 11 || cartas2[1] == 12 || band == false)
         {
-            tantos1 = 20;
+            tantos2 = 20;
             band = true;
         }
 
@@ -371,11 +371,14 @@ void reglas::Juego1()
     if (poder1[0] > poder2[0])
     {
         mano1++;
+      
         std::cout << "Ganaste la mano 1" << std::endl;
     }
     else if (poder1[0] < poder2[0])
     {
         mano2++;
+       
+
         std::cout << "Perdiste la mano 1" << std::endl;
     }
     else if (poder1[0] == poder2[0])

@@ -31,10 +31,11 @@ int bot::envido()
     int desc = 1 + rand() % 5;
     if (desc == 1)
         decision = 1;
-    else if (desc == 2)
-        decision = 2;
+    else if(desc == 2) decision == 2;
     else if (desc == 3)
         decision = 3;
+    else if(desc == 4 ||desc == 5 )
+        decision = 0;
 
     return decision;
 }

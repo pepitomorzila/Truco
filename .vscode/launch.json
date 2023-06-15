@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Usuario/Documents/GitHub/Truco",
-      "program": "c:/Users/Usuario/Documents/GitHub/Truco/build/Debug/outDebug",
+      "cwd": "c:/Users/Usuario/Truco",
+      "program": "c:/Users/Usuario/Truco/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -538,5 +538,7 @@ void cartas::getCartayPalo2(int opc, int opc1, int opc2)
         if (cartas2[i] == 10)
             cartas2[i] = 12;
     }
-    // std::cout << "Carta 2: " << cartas2[i] << " de " << palos2[i] << "\n";
+    
+    for (int i = 0; i <= 3; i++) std::cout << "Carta 2: " << cartas2[i] << " de " << palos2[i] << "\n";
+    
 }
